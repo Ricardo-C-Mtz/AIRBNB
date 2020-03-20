@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <title>Listar Libro Biblioteca</title>
+  <link rel="stylesheet" href="assets/estilo.css">
+
+</head>
+<header id="header">
+  </header>
+
+<body style="overflow-x: hidden;">
+    
+    <form id="filtro" style="position: relative; right: -74%;" class="form-inline my-2 my-lg-0">  
+         <select id="categoria" class="form-control selectpicker" >
+           <option onclick='document.location.href="listar_libros.html"' value="todo"> Todas</option>
+            <option value="Cuentos" >Cuentos</option>
+            <option value="Adultos">Adultos</option>
+            <option value="Programacion">Programacion</option> 
+            <option value="Animales domésticos">Animales domésticos</option>
+            <option value="Antigüedades y coleccionables">Antigüedades y coleccionables</option>
+            <option value="Arquitectura">Arquitectura</option>
+            <option value="Arte">Arte</option>
+            <option value="Artes de la Interpretación">Artes de la Interpretación</option>
+            <option value="Artes de lenguas y disciplinas">Artes de lenguas y disciplinas</option>
+            <option value="Artes y aficiones">Artes y aficiones</option>
+            <option value="Autoayuda">Autoayuda</option>
+            <option value="Biografia y autobiografia">Biografia y autobiografia</option>
+            <option value="Casa y hogar">Casa y hogar</option>
+            <option value="Ciencia">Ciencia</option>
+            <option value="Ciencia Social">Ciencia Social</option>
+            <option value="Ciencias politicas">Ciencias politicas</option>
+            <option value="Cocina">Cocina</option>
+            <option value="Colecciones literarias">Colecciones literarias</option>
+            <option value="Crimen real">Crimen real</option>
+            <option value="Critica literaria">Critica literaria</option>
+            <option value="Cuerpo, mente y espiritu">Cuerpo, mente y espiritu</option>
+            <option value="Cómics y novelas gráficas">Cómics y novelas gráficas</option>
+            <option value="Deportes y reconstrucción">Deportes y reconstrucción</option>
+            <option value="Drama">Drama</option>
+            <option value="Educación">Educación</option>
+            <option value="Familia y relaciones">Familia y relaciones</option>
+            <option value="Ficción">Ficción</option>
+            <option value="Ficción infantil y juvenil">Ficción infantil y juvenil</option>
+            <option value="Filosofia">Filosofia</option>
+            <option value="Fotografía">Fotografía</option>
+            <option value="Geografia">Geografia</option>
+            <option value="Herramientas de estudio">Herramientas de estudio</option>
+            <option value="Historia">Historia</option>
+            <option value="Horticultura">Horticultura</option>
+            <option value="Humor">Humor</option>
+            <option value="Informática e Internet">Informática e Internet</option>
+            <option value="Juegos">Juegos</option>
+            <option value="Lenguas y lingüística">Lenguas y lingüística</option>
+            <option value="Ley">Ley</option>
+            <option value="Matemáticas">Matemáticas</option>
+            <option value="Medicina">Medicina</option>
+            <option value="Música">Música</option>
+            <option value="Naturaleza">Naturaleza</option>
+          </select>
+        <button id="submit" class="btn btn-info my-2 my-sm-0" type="submit">Filtrar</button>
+      </form><br>
+  <table style="position: relative;" class="table table-striped">
+    <thead>
+      <tr style="text-align: center;">
+        <th scope="col">Foto</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Editorial</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    
+    <tbody id="action"></tbody>
+  </table>
+  <p id="error" style="color: red; display:none;"></p>
+
+  <script type="text/x-handlebars-template" id="index">
+
+  <tr style="border:blue 2px solid; text-align: center;">
+  <th scope="row"> <img src='{{{ img }}}'  width="100px" height="150" ></th>
+  <td style="vertical-align: middle;"> {{{ titulo }}}</td>
+  <td style="vertical-align: middle;"> {{{ autor }}}</td>
+  <td style="vertical-align: middle;"> {{{ editorial }}}</td>
+  <td style="vertical-align: middle;"> {{{ categoria }}}</td>
+  <td style="vertical-align: middle;"> {{{ fecha }}}</td>
+
+  
+
+</tr>
+
+  
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script> <script src="templatesCompiled.js"></script> 
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js">
+</script>
+
+<script type="text/javascript"> 
+    var template = document.getElementById('index').innerHTML;
+    var compile = Handlebars.compile(template);
+    $.ajax({
+      type: 'GET',
+      url: 'https://biblioteca-utags.herokuapp.com/libro',
+      beforeSend:function(request){
+              request.setRequestHeader("token", window.localStorage.getItem('token'));
+            },
+      success: function (resp) {
+        
+        for (var i = 0; i < resp.count; i++) {
+          var compileHTML = compile({
+            id: resp.libro[i]._id,
+            img: "https://biblioteca-utags.herokuapp.com/imagen/libro/"+resp.libro[i].img,
+            titulo: resp.libro[i].titulo,
+            autor: resp.libro[i].autor,
+            editorial: resp.libro[i].editorial,
+            categoria: resp.libro[i].categoria,
+            fecha: resp.libro[i].fecha
+          });
+
+          document.getElementById('action').innerHTML += compileHTML;
+        }
+
+        },
+        error: function (err) {
+          $('#error').text(err.responseJSON.err.message);
+          $('#error').show();
+          if(err.responseJSON.err.message == "jwt expired"){
+            alert("La sesión a expirado")
+            localStorage.clear();
+            window.location.href='index.html'
+          }
+
+
+        }
+      });
+   
+      $('form').on('submit', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var template = document.getElementById('index').innerHTML;
+        var compile = Handlebars.compile(template);
+        $.ajax({
+            type: 'GET',
+            url: 'https://biblioteca-utags.herokuapp.com/filtrar/libro/'+ document.getElementById("categoria").value ,
+            data: $('form').serialize(),
+            beforeSend:function(request){
+              request.setRequestHeader("token", window.localStorage.getItem('token'));
+            },
+            success: function (resp) {
+            if(resp.count == 0){
+              $('#error').text("No se encontro nada");
+              $('#error').show();
+            }
+              document.getElementById('action').innerHTML = null
+            for (var i = 0; i < resp.count; i++) {
+            var compileHTML = compile({
+            id: resp.libro[i]._id,
+            img: "https://biblioteca-utags.herokuapp.com/imagen/libro/"+resp.libro[i].img,
+            titulo: resp.libro[i].titulo,
+            autor: resp.libro[i].autor,
+            editorial: resp.libro[i].editorial,
+            categoria: resp.libro[i].categoria,
+            fecha: resp.libro[i].fecha
+
+            });
+            
+          document.getElementById('action').innerHTML += compileHTML;
+          }
+            },
+            error: function (err) {
+              $('#error').text(err.responseJSON.err.message);
+              $('#error').show();
+              if(err.responseJSON.err.message == "jwt expired"){
+            alert("La sesión a expirado")
+            localStorage.clear();
+            window.location.href='index.html'
+          }
+            }
+        });
+       
+    });
+
+    $('select').on('focus', function (e) {
+    $('#error').hide();
+    });
+
+  </script>
+
+
+</body>
+
+</html>
